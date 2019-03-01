@@ -18,21 +18,22 @@ public class TestLinkedList {
 
         LinkedList<Integer> newList = mergeLists(list, list2);
 
-        System.out.println(list);
-        System.out.println(list2);
-        System.out.println("new List that adds the previous two lists >" +newList);
+        System.out.println("list 1> " + list);
+        System.out.println("list 2> " + list2);
+        System.out.println("new List that merges the previous two lists >" + newList);
+        System.out.println();
 
         //truncatelist test
         newList.truncateList(6);
 
         System.out.println("Truncates everything after node 6 in new list > " + newList);
-
+        System.out.println();
         //getParent test
         Node<Integer> newNode = new Node<>(6);
         Node<Integer> parent = list.getParent(newNode);
         newList.add(parent);
         System.out.println("Gets parent of node 6 and adds it ot the end of newList > " +newList);
-
+        System.out.println();
     }
 
     public static <E> LinkedList<E> mergeLists(LinkedList<E> list1, LinkedList<E> list2) {
