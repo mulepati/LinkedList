@@ -3,6 +3,9 @@ import java.util.NoSuchElementException;
 public class LinkedList<E> {
     private Node<E> first;
 
+    public LinkedList() {this.first = null;}
+
+
     public LinkedList(E val) {
         this.first = new Node<>(val);
     }
@@ -29,6 +32,41 @@ public class LinkedList<E> {
         node.next = current;
         current = node;
 
+    }
+
+    public Node<E> getParent(Node<E> node) {
+        if(first == null) {
+            throw new NoSuchElementException();
+        }
+        Node<E> current = first;
+
+        if(current.equals(node)) {
+            return null;
+        }
+
+        while(current.next != null) {
+            Node<E> temp = new Node<>(current.data);
+            if(current.next.equals(node)) {
+                return temp;
+            }
+            current = current.next;
+        }
+        throw new NoSuchElementException();
+
+    }
+
+    public void truncateList(E value) {
+        Node<E> current = first;
+        if(current.data == value) {
+            first = null;
+        }
+        while(current.next != null) {
+            if(current.next.data == value) {
+                current.next = null;
+                break;
+            }
+            current = current.next;
+        }
     }
 
     public void remove(Node<E> node) {
